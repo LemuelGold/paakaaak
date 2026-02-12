@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine Invitation 💖</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', cursive;
+        overflow: hidden;
+        text-align: center;
+        color: white;
+        background: linear-gradient(to top, #ff9a9e, #fad0c4);
+        position: relative;
+        height: 100vh;
+    }
+
+    /* 🌷 Tulips Background */
+    .tulip {
+        position: absolute;
+        bottom: 0;
+        font-size: 120px;
+        z-index: 1;
+        animation: sway 3s ease-in-out infinite alternate;
+    }
+
+    .left { left: 5%; }
+    .center { left: 40%; }
+    .right { right: 5%; }
+
+    @keyframes sway {
+        from { transform: rotate(-3deg); }
+        to { transform: rotate(3deg); }
+    }
+
+    .container {
+        position: relative;
+        z-index: 2;
+        top: 45%;
+        transform: translateY(-50%);
+    }
+
+    h1 {
+        font-size: 3rem;
+        animation: glow 2s infinite alternate;
+    }
+
+    p {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        margin: 10px;
+        transition: all 0.4s ease;
+    }
+
+    .yes {
+        background-color: #ff4b5c;
+        color: white;
+    }
+
+    .no {
+        background-color: white;
+        color: #ff4b5c;
+    }
+
+    @keyframes glow {
+        from { text-shadow: 0 0 10px #fff; }
+        to { text-shadow: 0 0 25px #ff4b5c; }
+    }
+
+    .message {
+        font-size: 2rem;
+        margin-top: 20px;
+        display: none;
+    }
+</style>
+</head>
+
+<body>
+
+<!-- 🌷 Tulips -->
+<div class="tulip left">🌷</div>
+<div class="tulip center">🌷</div>
+<div class="tulip right">🌷</div>
+
+<div class="container">
+    <h1>Will You Be My Valentine? 💖</h1>
+    <p>You make my world bloom like flowers 🌸</p>
+    <button class="btn yes" id="yesBtn" onclick="accept()">Yes 💕</button>
+    <button class="btn no" id="noBtn" onclick="decline()">No 💔</button>
+    <div class="message" id="responseMessage"></div>
+</div>
+
+<script>
+    let growSize = 1;
+    let noClickCount = 0;
+    const maxNoClicks = 6;
+
+    function accept() {
+        const message = document.getElementById("responseMessage");
+        message.style.display = "block";
+        message.innerHTML = "Yay! 💖 I can't wait for our special day! 🌹✨";
+    }
+
+    function decline() {
+        const noBtn = document.getElementById("noBtn");
+        const yesBtn = document.getElementById("yesBtn");
+
+        noClickCount++;
+
+        // Keep NO button at the same vertical position but move sideways
+        noBtn.style.position = "absolute";
+        noBtn.style.top = noBtn.offsetTop + "px"; // maintain original vertical position
+        const maxLeft = window.innerWidth - noBtn.offsetWidth;
+        // Move left or right randomly but within viewport
+        noBtn.style.left = Math.random() * maxLeft + "px";
+
+        // Grow YES button gradually
+        growSize += 0.8;
+        yesBtn.style.transform = `scale(${growSize})`;
+
+        // If NO clicked 6 times
+        if (noClickCount >= maxNoClicks) {
+            yesBtn.style.position = "fixed";
+            yesBtn.style.top = "0";
+            yesBtn.style.left = "0";
+            yesBtn.style.width = "100vw";
+            yesBtn.style.height = "100vh";
+            yesBtn.style.fontSize = "4rem";
+            yesBtn.style.borderRadius = "0";
+            yesBtn.style.transform = "none";
+            yesBtn.innerHTML = "JUST PRESS YES 💖😆";
+
+            noBtn.style.display = "none";
+        }
+    }
+</script>
+
+
+</body>
+</html>
