@@ -3,149 +3,433 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy dsawdsa Valentine's💖</title>
+<title>Happy Valentine's bebeee💖</title>
 
 <style>
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Segoe UI', cursive;
-        overflow: hidden;
-        text-align: center;
-        color: white;
-        background: linear-gradient(to top, #ff9a9e, #fad0c4);
-        position: relative;
-        height: 100vh;
-    }
+body{
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    font-family: 'Segoe UI', sans-serif;
+    background:linear-gradient(135deg, #ffd6e8 0%, #ffe5f0 50%, #ffd6e8 100%);
+    color:#333;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
 
-    /* 🌷 Tulips Background */
-    .tulip {
-        position: absolute;
-        bottom: 0;
-        font-size: 120px;
-        z-index: 1;
-        animation: sway 3s ease-in-out infinite alternate;
-    }
+/* 🌌 Background */
+.night{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:linear-gradient(135deg, #ffd6e8 0%, #ffe5f0 50%, #ffd6e8 100%);
+    z-index:-3;
+}
 
-    .left { left: 5%; }
-    .center { left: 40%; }
-    .right { right: 5%; }
+/* Floating hearts in background */
+.bg-heart{
+    position:absolute;
+    width:30px;
+    height:30px;
+    background:var(--color, #ffb3d9);
+    transform:rotate(-45deg);
+    opacity:0.6;
+    animation:floatHeart 10s ease-in-out infinite;
+    animation-delay:var(--delay, 0s);
+}
 
-    @keyframes sway {
-        from { transform: rotate(-3deg); }
-        to { transform: rotate(3deg); }
-    }
+.bg-heart::before,
+.bg-heart::after{
+    content:'';
+    position:absolute;
+    width:30px;
+    height:30px;
+    background:var(--color, #ffb3d9);
+    border-radius:50%;
+}
 
-    .container {
-        position: relative;
-        z-index: 2;
-        top: 45%;
-        transform: translateY(-50%);
-    }
+.bg-heart::before{
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+}
 
-    h1 {
-        font-size: 3rem;
-        animation: glow 2s infinite alternate;
-    }
+.bg-heart::after{
+    left:0;
+    top:50%;
+    transform:translateY(-50%);
+}
 
-    p {
-        font-size: 1.3rem;
-        margin-bottom: 20px;
+@keyframes floatHeart{
+    0%{
+        transform:translateY(0) rotate(-45deg);
+        opacity:0;
     }
+    10%{
+        opacity:0.6;
+    }
+    90%{
+        opacity:0.6;
+    }
+    100%{
+        transform:translateY(-100vh) rotate(-45deg);
+        opacity:0;
+    }
+}
 
-    .btn {
-        padding: 12px 25px;
-        font-size: 1rem;
-        border: none;
-        border-radius: 25px;
-        cursor: pointer;
-        margin: 10px;
-        transition: all 0.4s ease;
-    }
+/* ✨ Small stars */
+.stars{
+    display:none;
+}
 
-    .yes {
-        background-color: #ff4b5c;
-        color: white;
-    }
+/* 💡 Center Glow */
+.center-glow{
+    display:none;
+}
 
-    .no {
-        background-color: white;
-        color: #ff4b5c;
-    }
+/* 🌿 Grass Clusters */
+.grass{
+    display:none;
+}
 
-    @keyframes glow {
-        from { text-shadow: 0 0 10px #fff; }
-        to { text-shadow: 0 0 25px #ff4b5c; }
-    }
+@keyframes sway{
+    from{transform:rotate(-5deg);}
+    to{transform:rotate(5deg);}
+}
 
-    .message {
-        font-size: 2rem;
-        margin-top: 20px;
-        display: none;
-    }
+/* 💐 Heart Bouquet - Hidden */
+.flowers{
+    display:none;
+}
+
+/* Card wrapper */
+.card-wrapper{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+}
+
+/* Image container - outside the card */
+.image-container{
+    background:white;
+    padding:10px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(255,105,180,0.3);
+    border:3px solid #333;
+}
+
+.card-image{
+    width:250px;
+    height:250px;
+    object-fit:cover;
+    border-radius:10px;
+    display:block;
+}
+
+/* 💖 Card Container */
+.container{
+    position:relative;
+    background:white;
+    border-radius:30px;
+    padding:40px 60px 50px 60px;
+    box-shadow:0 20px 60px rgba(255,105,180,0.3);
+    text-align:center;
+    max-width:500px;
+    z-index:10;
+    border:3px solid #333;
+    overflow:visible;
+}
+
+h1{
+    font-size:2.5rem;
+    font-weight:500;
+    color:#ff6b9d;
+    margin-top:0;
+    margin-bottom:40px;
+}
+
+p{
+    opacity:0.8;
+    margin-bottom:80px;
+    font-size:1.1rem;
+    color:#666;
+    min-height:60px;
+}
+
+.button-container{
+    margin-top:50px;
+    min-height:100px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+}
+
+.btn{
+    padding:15px 40px;
+    font-size:1.2rem;
+    border:none;
+    border-radius:50px;
+    cursor:pointer;
+    margin:10px;
+    transition:transform 0.3s ease;
+    font-weight:600;
+}
+
+.yes{
+    background:#ff6b9d;
+    color:white;
+    box-shadow:0 5px 15px rgba(255,107,157,0.4);
+}
+
+.yes:hover{
+    background:#ff4d88;
+    transform:scale(1.05);
+}
+
+.no{
+    background:white;
+    color:#ff6b9d;
+    border:3px solid #ff6b9d;
+}
+
+.no:hover{
+    background:#fff0f5;
+    transform:scale(0.95);
+}
+
+/* Letter Modal */
+.modal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.5);
+    z-index:9999;
+    justify-content:center;
+    align-items:center;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-content{
+    background:white;
+    border-radius:30px;
+    padding:40px;
+    max-width:600px;
+    max-height:80vh;
+    overflow-y:auto;
+    box-shadow:0 20px 60px rgba(0,0,0,0.3);
+    border:3px solid #333;
+    position:relative;
+}
+
+.close-btn{
+    position:absolute;
+    top:15px;
+    right:20px;
+    font-size:2rem;
+    cursor:pointer;
+    color:#ff6b9d;
+    background:none;
+    border:none;
+}
+
+.letter-image{
+    width:100%;
+    max-width:400px;
+    border-radius:20px;
+    margin-bottom:20px;
+}
+
+.letter-message{
+    font-size:1.1rem;
+    line-height:1.8;
+    color:#333;
+    text-align:left;
+}
 </style>
 </head>
 
 <body>
 
-<!-- 🌷 Tulips -->
-<div class="tulip left">🌷</div>
-<div class="tulip center">🌷</div>
-<div class="tulip right">🌷</div>
+<div class="night">
+    <!-- Floating background hearts -->
+    <div class="bg-heart" style="--color:#ffb3d9; --delay:0s; left:10%; bottom:-50px;"></div>
+    <div class="bg-heart" style="--color:#ff8fb3; --delay:2s; left:20%; bottom:-50px;"></div>
+    <div class="bg-heart" style="--color:#ffcce5; --delay:4s; left:80%; bottom:-50px;"></div>
+    <div class="bg-heart" style="--color:#ff6b9d; --delay:6s; left:90%; bottom:-50px;"></div>
+    <div class="bg-heart" style="--color:#ffb3d9; --delay:1s; left:30%; bottom:-50px;"></div>
+    <div class="bg-heart" style="--color:#ff8fb3; --delay:3s; left:70%; bottom:-50px;"></div>
+    <div class="bg-heart" style="--color:#ffcce5; --delay:5s; left:50%; bottom:-50px;"></div>
+</div>
 
-<div class="container">
-    <h1>Will You Be My Valentine? 💖</h1>
-    <p>You make my world blooms lkajdawjldan like flowers 🌸</p>
-    <button class="btn yes" id="yesBtn" onclick="accept()">Yes 💕</button>
-    <button class="btn no" id="noBtn" onclick="decline()">No 💔</button>
-    <div class="message" id="responseMessage"></div>
+<div class="card-wrapper">
+    <div class="image-container">
+        <img src="cat.jpg.jpg" alt="Valentine Image" class="card-image">
+    </div>
+    
+    <div class="container">
+        <h1>Happy Valentine's Day</h1>
+        <p>happy valentine's bebeee hahahaha. Will you be my Valentine This year? YES or NO?</p>
+        <div class="button-container">
+            <button class="btn yes">Yes 💕</button>
+            <button class="btn no">No 💔</button>
+        </div>
+    </div>
+</div>
+
+<!-- Letter Modal -->
+<div id="letterModal" class="modal">
+    <div class="modal-content">
+        <button class="close-btn" onclick="closeLetter()">&times;</button>
+        <img src="letter.jpg.jpg" alt="Letter Image" class="letter-image">
+        <div class="letter-message">
+            <p>Hi bebee HAHAHAHHAA na surprise napud ka nuu 🤭 Happy Valentine's bebee 💗
+Wala ko kabalo kung imoha nabang gi basa akong letter pero karon hatagan napud tikaa na surprise pud ka bebe nu nganong naa imong nawng HAHAHAHHA 
+So first of all I just want to thank you for everything bebee, thank youu kaayo sa tanan 🥹💖 sa tanan kalipay na imong gi hatag sa akoa. Happy kaayo ko kay nakaila jud tikaaa ✨ 
+Naka alala paba ka pano ta nag kaila? hahahaha funny kaayo sa imong kwento nga na love at first sight ka sa akoa pag baba nako sa sakyanan ambot ug jamming ba to nimo sa akoa kay crush biya ko nimo HAHAHAHHA pero bitaw bebee crush pud kaayo tika ato that time 
+Na alala ba nimo tong gi tripan tang manoy nimo nga mag pa ila-ila lagi? didto pud biya to na time nga nag shake hands ta nga pirte nakong kiliga HAHAHAHAHHA jejemon pa kaayo pero didto jud ta nag start… hangtod sa nag chat2 nata ug nag kita 
+At first malipayun pata ato pero after 4 months nag bulag ta. Wala ta kabalo asa ta nag kulang ato sa isat-isa. I can't blame you that time kay wala man pud ko kabalo asa ko nagkamali. Pero habang nag dugay, naka realize ko nga mga bata pajud guro ta ato nga time 
+Pero karon nga dagko nata, kasabot nata sa atong situation. Di lang nato i-pressure atong sarili kay taas pa ta'g baktasun 
+Pero karon, bebe, buhaton nako ang tanan para malipay tang duha 
+Oo, naa ta sa situation nga wala pa tay label, pero dili na nako na hunahunaon. Kabalo ko sa akong sarili nga bisan wala tay label, i-cherish tika in every universe ✨😘 
+Kabalo pud ko nimo nga love pud ko nimo, ma feel jud nako na 🥹💞 maong thankful kaayo ko saimoha nga naabot ka sa akong life 🌷🥰 
+Ayaw kabalaka bebee, buhaton nato tanan nga makaya nato ang ingana nga situation nga LDR. Kung sa kanta pa "Kalapastangan ang 'di Ka ibigin
+Kalokohan ang 'di Ka isipin
+Kung ang mundo ay biglang gugunawin
+Ikaw ang una kong hahanapin"
+Love kaayo tikaaa bebee
+Diba naka ask ka "what did I do to deserve thiss??"
+Just simple bebee… maybe I didn't deserve you first, but I'm glad I have you now 💞✨ 
+Just be you. That's all I need 🤍 
+You know bebe, you're just like a universe 🥹💗 naa na tanan saimoha akong gipangita. Not just sa outside, but inside jud — imong kabut-an, pag ka generous daghan pa kaayo nga di nako ma explain…
+Pero pinaka importante, duol ka sa Ginoo 
+Nyaaa gwapaaaa pajud kaayoo tayss 😍😘HAHAHAHAHA 
+Cuteee kaayo akong bebe uy hubakon lang HAHAHAHA
+Basta bebee, mao rana.
+Happy Valentine's 💗
+Cute kaayo ka saimong picture HAHAHAHA</p>
+        </div>
+    </div>
 </div>
 
 <script>
-    let growSize = 1;
-    let noClickCount = 0;
-    const maxNoClicks = 6;
+let noAttempts = 0;
+const maxAttempts = 10;
+const yesBtn = document.querySelector('.yes');
+const noBtn = document.querySelector('.no');
+const cardImage = document.querySelector('.card-image');
+const messageText = document.querySelector('p');
+const cardWrapper = document.querySelector('.card-wrapper');
 
-    function accept() {
-        const message = document.getElementById("responseMessage");
-        message.style.display = "block";
-        message.innerHTML = "Yay! 💖 I can't wait for our special day! 🌹✨";
+// Array of image filenames
+const images = [
+    'cat.jpg.jpg',
+    'cat1.jpg.jpg',
+    'cat2.jpg.jpg',
+    'cat3.jpg.jpg',
+    'cat4.jpg.jpg',
+    'cat5.jpg.jpg',
+    'cat6.jpg.jpg',
+    'cat7.jpg.jpg',
+    'cat8.jpg.jpg',
+    'cat9.jpg.jpg',
+    'cat10.jpg (2).jpg'
+];
+
+// Array of messages for each attempt
+const messages = [
+    "happy valentine's bebeee hahahaha. Will you be my Valentine This year? YES or NO?",
+    "sure uy nag No ka sa chuy? ayaw ingna mag No napud ka.",
+    "nag No jud diay sya, ara oh matcha bebee favorite nimo kay para dili naka mag NO.",
+    "nag No gihapon uy gina-layo na gani nato ang No mag No jud", // Replace with your message
+    "Naa man kuy kwarta daee oh ngano nag No man gihapon ka?", // Replace with your message
+    "awa gi pakyuhan nuon ka sige man gud kag No. please daee ayaw na pag No kay mapakyuhan napud ka HAHAHAHA", // Replace with your message
+    "Laina uy nag No jud diay sya. awa mag hamay jud ka karon kung mag No gihapon ka", // Replace with your message
+    "Awa gi ingnan tika HAHAHAHAHA gi pakyuhan nuon ka", // Replace with your message
+    "HAHAHAHA atik lang daeee HAHAHAHA. sige na bebeee, be my valentine<3", // Replace with your message
+    "arghh!! lamia kissan uy. Ayaw nag tanggi sa chuy ba pag Yes na diha!" // Replace with your message
+];
+
+// Yes button - show success message based on attempts
+yesBtn.addEventListener('click', function() {
+    if(noAttempts < maxAttempts) {
+        // If clicked YES before 10 attempts
+        document.querySelector('.container').innerHTML = `
+            <p style="font-size:1.5rem; margin-top:50px;">yay nag yes jud sya 😊</p>
+            <button class="btn letter-btn" onclick="showLetter()" style="background:#ff6b9d; color:white; margin-top:30px;">Letter 💌</button>
+        `;
+    } else {
+        // If clicked YES after 10 attempts (NO button disappeared)
+        document.querySelector('.container').innerHTML = `
+            <p style="font-size:1.5rem; margin-top:50px;">I knew you'd say yes! 😊</p>
+            <p style="font-size:1.2rem;">Happy Valentine's Day bebeee! 🌸💖</p>
+            <button class="btn letter-btn" onclick="showLetter()" style="background:#ff6b9d; color:white; margin-top:30px;">Letter 💌</button>
+        `;
     }
+});
 
-    function decline() {
-        const noBtn = document.getElementById("noBtn");
-        const yesBtn = document.getElementById("yesBtn");
+// Show letter modal
+function showLetter() {
+    document.getElementById('letterModal').classList.add('show');
+}
 
-        noClickCount++;
+// Close letter modal
+function closeLetter() {
+    document.getElementById('letterModal').classList.remove('show');
+}
 
-        // Keep NO button at the same vertical position but move sideways
-        noBtn.style.position = "absolute";
-        noBtn.style.top = noBtn.offsetTop + "px"; // maintain original vertical position
-        const maxLeft = window.innerWidth - noBtn.offsetWidth;
-        // Move left or right randomly but within viewport
-        noBtn.style.left = Math.random() * maxLeft + "px";
-
-        // Grow YES button gradually
-        growSize += 0.8;
-        yesBtn.style.transform = `scale(${growSize})`;
-
-        // If NO clicked 6 times
-        if (noClickCount >= maxNoClicks) {
-            yesBtn.style.position = "fixed";
-            yesBtn.style.top = "0";
-            yesBtn.style.left = "0";
-            yesBtn.style.width = "100vw";
-            yesBtn.style.height = "100vh";
-            yesBtn.style.fontSize = "4rem";
-            yesBtn.style.borderRadius = "0";
-            yesBtn.style.transform = "none";
-            yesBtn.innerHTML = "JUST PRESS YES 💖😆";
-
-            noBtn.style.display = "none";
+// No button - move randomly OUTSIDE the box, change image and message
+noBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    if(noAttempts < maxAttempts) {
+        noAttempts++;
+        
+        // Change image based on attempt number
+        if(noAttempts < images.length) {
+            cardImage.src = images[noAttempts];
+        }
+        
+        // Change message based on attempt number
+        if(noAttempts < messages.length) {
+            messageText.textContent = messages[noAttempts];
+        }
+        
+        // Make Yes button bigger (30% per attempt)
+        const currentSize = 1 + (noAttempts * 0.3);
+        yesBtn.style.transform = `scale(${currentSize})`;
+        
+        // Move No button to random position on the screen (not inside container)
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+        
+        const maxX = viewportWidth - noBtn.offsetWidth - 20;
+        const maxY = viewportHeight - noBtn.offsetHeight - 20;
+        
+        const randomX = Math.random() * maxX;
+        const randomY = Math.random() * maxY;
+        
+        noBtn.style.position = 'fixed';
+        noBtn.style.left = randomX + 'px';
+        noBtn.style.top = randomY + 'px';
+        noBtn.style.zIndex = '1000';
+        
+        // After 10 attempts, disable No button
+        if(noAttempts >= maxAttempts) {
+            noBtn.style.display = 'none';
+            messageText.textContent = 'Bleee! Ni gara naka ha gi tanggal na nako ang No. So pag YES na diha! 💕';
         }
     }
+});
 </script>
-
 
 </body>
 </html>
