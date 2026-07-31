@@ -6,12 +6,16 @@
 <title>Happy Valentine's bebeee💖</title>
 
 <style>
+html {
+    font-family: 'Times New Roman', Times, serif;
+}
+
 body{
     margin:0;
     padding:0;
     overflow:hidden;
-    font-family: 'Segoe UI', sans-serif;
-    background:linear-gradient(135deg, #ffd6e8 0%, #ffe5f0 50%, #ffd6e8 100%);
+    font-family: inherit;
+    background:linear-gradient(180deg, #fff4c8 0%, #ffe8a9 30%, #ffd37a 65%, #fffbe6 100%);
     color:#333;
     display:flex;
     justify-content:center;
@@ -19,24 +23,39 @@ body{
     height:100vh;
 }
 
-/* 🌌 Background */
+button, input, textarea, select {
+    font-family: inherit;
+}
+
+body::before {
+    content:'';
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255, 196, 97, 0.25), transparent 18%),
+        radial-gradient(circle at 80% 18%, rgba(255, 122, 184, 0.18), transparent 15%),
+        radial-gradient(circle at 50% 85%, rgba(255, 255, 255, 0.6), transparent 20%);
+    pointer-events:none;
+}
+
+/* 🎉 Birthday confetti */
 .night{
     position:fixed;
     width:100%;
     height:100%;
-    background:linear-gradient(135deg, #ffd6e8 0%, #ffe5f0 50%, #ffd6e8 100%);
+    background:transparent;
     z-index:-3;
 }
 
-/* Floating hearts in background */
 .bg-heart{
     position:absolute;
-    width:30px;
-    height:30px;
+    width:16px;
+    height:16px;
     background:var(--color, #ffb3d9);
-    transform:rotate(-45deg);
-    opacity:0.6;
-    animation:floatHeart 10s ease-in-out infinite;
+    opacity:0.9;
+    transform:rotate(20deg);
+    border-radius:4px;
+    animation:floatHeart 8s ease-in-out infinite;
     animation-delay:var(--delay, 0s);
 }
 
@@ -44,22 +63,23 @@ body{
 .bg-heart::after{
     content:'';
     position:absolute;
-    width:30px;
-    height:30px;
+    width:10px;
+    height:10px;
     background:var(--color, #ffb3d9);
     border-radius:50%;
+    opacity:0.8;
 }
 
 .bg-heart::before{
-    top:0;
+    top:-10px;
     left:50%;
     transform:translateX(-50%);
 }
 
 .bg-heart::after{
-    left:0;
+    left:100%;
     top:50%;
-    transform:translateY(-50%);
+    transform:translate(-50%, -50%);
 }
 
 @keyframes floatHeart{
@@ -122,8 +142,8 @@ body{
 }
 
 .card-image{
-    width:250px;
-    height:250px;
+    width:180px;
+    height:180px;
     object-fit:cover;
     border-radius:10px;
     display:block;
@@ -132,23 +152,25 @@ body{
 /* 💖 Card Container */
 .container{
     position:relative;
-    background:white;
-    border-radius:30px;
-    padding:40px 60px 50px 60px;
-    box-shadow:0 20px 60px rgba(255,105,180,0.3);
+    background:rgba(255,255,255,0.94);
+    border-radius:32px;
+    padding:40px 50px 50px 50px;
+    box-shadow:0 30px 50px rgba(255, 105, 180, 0.16), 0 12px 30px rgba(0,0,0,0.08);
     text-align:center;
-    max-width:500px;
+    max-width:520px;
     z-index:10;
-    border:3px solid #333;
+    border:1px solid rgba(255, 105, 180, 0.22);
     overflow:visible;
+    backdrop-filter: blur(5px);
 }
 
 h1{
-    font-size:2.5rem;
-    font-weight:500;
-    color:#ff6b9d;
+    font-size:2.6rem;
+    font-weight:600;
+    color:#e64a7b;
     margin-top:0;
-    margin-bottom:40px;
+    margin-bottom:34px;
+    letter-spacing:0.02em;
 }
 
 p{
@@ -160,8 +182,8 @@ p{
 }
 
 .button-container{
-    margin-top:50px;
-    min-height:100px;
+    margin-top:40px;
+    min-height:90px;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -169,20 +191,330 @@ p{
 }
 
 .btn{
-    padding:15px 40px;
-    font-size:1.2rem;
+    padding:14px 38px;
+    font-size:1.1rem;
     border:none;
-    border-radius:50px;
+    border-radius:999px;
     cursor:pointer;
     margin:10px;
-    transition:transform 0.3s ease;
-    font-weight:600;
+    transition:transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    font-weight:700;
+}
+
+.letter-btn{
+    background:linear-gradient(135deg, #ff7aa3 0%, #ff5ea0 48%, #ff4087 100%);
+    color:#fff;
+    box-shadow:0 18px 35px rgba(255, 93, 146, 0.32);
+}
+
+.letter-btn:hover{
+    transform:translateY(-2px) scale(1.01);
+    box-shadow:0 24px 40px rgba(255, 93, 146, 0.36);
+}
+
+/* Animated letter overlay */
+.letter-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(255,245,243,0.86);
+    backdrop-filter: blur(8px);
+    z-index:10000;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+.letter-overlay.show{
+    display:flex;
+}
+
+.letter-overlay::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle at 20% 15%, rgba(255, 243, 233, 0.7), transparent 18%),
+                radial-gradient(circle at 85% 20%, rgba(255, 216, 228, 0.35), transparent 18%),
+                radial-gradient(circle at 50% 75%, rgba(255, 255, 255, 0.8), transparent 20%);
+    pointer-events:none;
+}
+
+.card-wrapper.fade-out{
+    opacity:0;
+    transform:scale(0.96);
+    pointer-events:none;
+    transition:opacity 0.55s ease, transform 0.55s ease;
+}
+
+.letter-stage{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:30px;
+    width:min(100%, 920px);
+    padding:20px;
+    z-index:1;
+}
+
+.envelope-wrapper{
+    position:relative;
+    width:280px;
+    height:200px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.envelope-wrapper::before{
+    content:'';
+    position:absolute;
+    inset:20px;
+    background:radial-gradient(circle, rgba(255,227,235,0.65), transparent 45%);
+    filter:blur(30px);
+    opacity:0;
+    transition:opacity 0.45s ease;
+}
+
+.letter-overlay.show .envelope-wrapper::before{
+    opacity:1;
+}
+
+.envelope{
+    position:relative;
+    width:280px;
+    height:190px;
+    transform:scale(0.8);
+    opacity:0;
+    transition:transform 0.6s ease, opacity 0.6s ease;
+}
+
+.letter-overlay.show .envelope{
+    animation:envelope-pop 0.72s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.envelope-body{
+    position:absolute;
+    inset:0;
+    border-radius:24px;
+    background:linear-gradient(180deg, #ffeef2 0%, #fff7f4 100%);
+    border:1px solid rgba(255, 183, 201, 0.75);
+    box-shadow: inset 0 12px 28px rgba(255,255,255,0.75), 0 16px 42px rgba(222, 78, 124, 0.14);
+}
+
+.envelope-flap{
+    position:absolute;
+    width:100%;
+    height:54%;
+    top:0;
+    left:0;
+    background:linear-gradient(135deg, #ffdaea 0%, #ffc7d9 100%);
+    border:1px solid rgba(255, 183, 201, 0.9);
+    border-bottom:none;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transform-origin:50% 100%;
+    transform:perspective(400px) rotateX(0deg);
+    box-shadow: inset 0 8px 16px rgba(255,255,255,0.8);
+    transition:transform 0.8s ease 0.5s;
+}
+
+.envelope.open .envelope-flap{
+    transform:perspective(400px) rotateX(-170deg);
+}
+
+.wax-seal{
+    position:absolute;
+    width:26px;
+    height:26px;
+    background:radial-gradient(circle, #ff77a1 0%, #de456e 65%);
+    border-radius:50%;
+    left:50%;
+    top:44%;
+    transform:translateX(-50%);
+    box-shadow:0 0 0 5px rgba(255, 164, 196, 0.35), inset 0 2px 8px rgba(255,255,255,0.4);
+    z-index:2;
+}
+
+.envelope-sheet{
+    position:absolute;
+    left:12%;
+    right:12%;
+    top:26%;
+    height:60%;
+    background:linear-gradient(180deg, #fffefc 0%, #f5e8e6 100%);
+    border-radius:14px;
+    border:1px solid rgba(221, 174, 181, 0.55);
+    box-shadow: inset 0 2px 10px rgba(255,255,255,0.9), inset 0 -1px 0 rgba(255,255,255,0.8);
+    transform:translateY(20px);
+    opacity:0;
+    transition:transform 0.8s ease 0.85s, opacity 0.5s ease 0.85s;
+    z-index:1;
+}
+
+.envelope.open .envelope-sheet{
+    transform:translateY(-66px);
+    opacity:1;
+}
+
+.envelope.open .wax-seal{
+    transform:translateX(-50%) scale(0.95);
+    transition:transform 0.3s ease 0.5s;
+}
+
+.letter-card{
+    width:min(100%, 720px);
+    max-width:760px;
+    background:rgba(255,255,255,0.98);
+    border-radius:34px;
+    padding:34px;
+    border:1px solid rgba(255,190,206,0.45);
+    box-shadow:0 30px 70px rgba(226, 88, 138, 0.16);
+    opacity:0;
+    transform:scale(0.93);
+    display:none;
+    transition:opacity 0.55s ease, transform 0.55s ease;
+    position:relative;
+}
+
+.close-overlay-btn{
+    position:absolute;
+    top:18px;
+    right:18px;
+    width:40px;
+    height:40px;
+    border:none;
+    border-radius:50%;
+    background:rgba(255,255,255,0.96);
+    color:#d94f7e;
+    font-size:1.2rem;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 12px 24px rgba(217,79,126,0.18);
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.close-overlay-btn:hover{
+    transform:scale(1.05);
+    box-shadow:0 14px 26px rgba(217,79,126,0.24);
+}
+
+.letter-card .letter-image-letter{
+    width:100%;
+    max-width:360px;
+    max-height:280px;
+    border-radius:24px;
+    box-shadow:0 18px 46px rgba(226, 88, 138, 0.16);
+    margin-bottom:22px;
+    object-fit:cover;
+}
+
+.letter-card.visible{
+    display:block;
+    opacity:1;
+    transform:scale(1);
+    animation:card-pop 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.letter-card h2{
+    margin:0 0 18px;
+    font-size:2rem;
+    color:#d94f7e;
+    letter-spacing:0.01em;
+}
+
+.letter-card .letter-content{
+    max-height:430px;
+    overflow-y:auto;
+    padding-right:10px;
+    line-height:1.8;
+    color:#4f3a3c;
+    white-space:pre-wrap;
+    font-size:1rem;
+}
+
+.letter-card .close-card{
+    margin-top:28px;
+    padding:14px 30px;
+    border:none;
+    border-radius:999px;
+    background:linear-gradient(135deg, #ff7aa3 0%, #ff4c7c 100%);
+    color:#fff;
+    cursor:pointer;
+    font-weight:700;
+    box-shadow:0 16px 30px rgba(255, 81, 138, 0.2);
+}
+
+.floating-heart,
+.sparkle{
+    position:absolute;
+    opacity:0;
+    pointer-events:none;
+}
+
+.floating-heart{
+    width:16px;
+    height:16px;
+    background:#ffbeda;
+    border-radius:50% 50% 50% 20%;
+    transform:rotate(45deg) scale(0.75);
+    box-shadow:0 0 0 1px rgba(255,255,255,0.7);
+    animation:heart-float 6s ease-in-out infinite;
+}
+
+.sparkle{
+    width:8px;
+    height:8px;
+    background:linear-gradient(135deg, #fff9f8, #ffd4de);
+    transform:rotate(45deg);
+    border-radius:15%;
+    box-shadow:0 0 20px rgba(255, 207, 217, 0.65);
+    animation:glow-sparkle 4s ease-in-out infinite;
+}
+
+@keyframes heart-float{
+    0%{ transform:translateY(0) rotate(45deg) scale(0.8); opacity:0; }
+    10%{ opacity:1; }
+    50%{ transform:translateY(-80px) rotate(45deg) scale(1); }
+    90%{ opacity:0.2; }
+    100%{ transform:translateY(-140px) rotate(45deg) scale(0.6); opacity:0; }
+}
+
+@keyframes glow-sparkle{
+    0%{ opacity:0; transform:scale(0.8) rotate(45deg); }
+    25%{ opacity:0.8; }
+    50%{ transform:scale(1.2) rotate(45deg); opacity:1; }
+    100%{ opacity:0; transform:scale(0.9) rotate(45deg); }
+}
+
+@keyframes envelope-pop{
+    0%{ transform:scale(0.8); opacity:0; }
+    70%{ transform:scale(1.05); opacity:1; }
+    100%{ transform:scale(1); opacity:1; }
+}
+
+@keyframes card-pop{
+    0%{ opacity:0; transform:scale(0.94); }
+    100%{ opacity:1; transform:scale(1); }
+}
+
+@media (max-width: 720px) {
+    .letter-stage{ gap:24px; }
+    .envelope-wrapper{ width:220px; height:155px; }
+    .envelope{ width:220px; height:150px; }
+    .letter-card{ padding:28px; }
+    .letter-card h2{ font-size:1.75rem; }
+}
+
+@media (max-width: 520px) {
+    .letter-stage{ padding:16px; }
+    .letter-card{ min-height:360px; }
 }
 
 .yes{
     background:#ff6b9d;
     color:white;
-    box-shadow:0 5px 15px rgba(255,107,157,0.4);
+    box-shadow:0 5px 15px rgba(255,107,157,0.35);
 }
 
 .yes:hover{
@@ -193,12 +525,12 @@ p{
 .no{
     background:white;
     color:#ff6b9d;
-    border:3px solid #ff6b9d;
+    border:2px solid #ff9ab8;
 }
 
 .no:hover{
     background:#fff0f5;
-    transform:scale(0.95);
+    transform:scale(0.98);
 }
 
 /* Letter Modal */
@@ -220,14 +552,14 @@ p{
 }
 
 .modal-content{
-    background:white;
-    border-radius:30px;
-    padding:40px;
-    max-width:600px;
-    max-height:80vh;
+    background:rgba(255,255,255,0.98);
+    border-radius:32px;
+    padding:36px;
+    max-width:620px;
+    max-height:82vh;
     overflow-y:auto;
-    box-shadow:0 20px 60px rgba(0,0,0,0.3);
-    border:3px solid #333;
+    box-shadow:0 28px 70px rgba(0,0,0,0.18);
+    border:1px solid rgba(255,105,180,0.25);
     position:relative;
 }
 
@@ -322,6 +654,48 @@ p{
 
 <body>
 
+<div id="letterOverlay" class="letter-overlay">
+    <div class="letter-stage">
+        <div class="envelope-wrapper">
+            <div id="envelope" class="envelope">
+                <div class="envelope-flap"></div>
+                <div class="envelope-body"></div>
+                <div class="wax-seal"></div>
+                <div class="envelope-sheet"></div>
+            </div>
+            <div class="floating-heart" style="left:15%; top:20%; animation-delay:0.2s;"></div>
+            <div class="floating-heart" style="left:70%; top:30%; animation-delay:1.2s;"></div>
+            <div class="sparkle" style="left:28%; top:5%; animation-delay:0.5s;"></div>
+            <div class="sparkle" style="left:80%; top:15%; animation-delay:1s;"></div>
+        </div>
+
+        <div id="letterCard" class="letter-card">
+            <button class="close-overlay-btn" onclick="closeLetter()">×</button>
+            <h2>Hi Bebeee!!!😘💗</h2>
+            <img id="letterImage" class="letter-image-letter" src="letter.jpg.jpg" alt="Our picture">
+            <div id="letterContent" class="letter-content"></div>
+            <button class="close-card" onclick="closeLetter()">Close Letter</button>
+        </div>
+        <div id="letterSource" style="display:none; white-space:pre-wrap;">
+Hi, Bebeee! Happy Happy Birthday!!!🎉🤭
+
+Happy 20th Birthday Bebeee🎉, I hope your day is as amazing and special as you are. Today is your day, and I hope it's filled with laughter, love and everything that makes you happy. I know nag ka problema ka karon sa imong situation sa school, but continue lang gihapon ka, continue lang gihapon ka miskan magkalisod na. Mao ng isa sa akong naganahan sa imoha dili dali mo surrender. Kabalo ko bebe nga nagkalisod ka-karon sa imong study, pressured kaayo ka. Pero ayaw lang jud ug surrender bebee, kung kapoy ka pahuway, then continue napud. Maong ayaw jud kawalag hope bebee, dili mag sige ug isip ug mga negative comments, charr. HAHAHAHAHA kabalo ko makaya rana nimo. In Isaiah 60:22 when the time is right i the lord will make it happen💞💞, So laban lang jud,
+
+bebe. thank you for being such an incredible person. Your kindness, Strength, and positivity inspire everyone around you. You bring so much joy, love, and happiness into my life. I am grateful for every moments that we share together in that day, na nag kita ta. If God allowed me to make a wish, I would ask to be by your side forever, for nothing makes me happier than sharing life's beautiful and unforgettable moments with you. Every video call, every laugh, and every kabuang nato, lalo natong nag kita ta, has become a memory I will always treasure.✨😘 and thank you for being you. and i-remind nako nimo nga, you are enough, you are loved, you are so so special.✨✨ Bebe padayun lang sa imong pagka-maayo, and unta tagaan pakag daghang blessing ni lord nga mo abot sa imoha, amping always bebe.😘💗
+
+
+reason why i love you:🥹💖
+your smile, your kindness imong mga corny na jokes HAHHAHA and the last one is your hug. 🥹🌷 I miss you so much bebe🥹💖🌷
+
+I love you bebeeee💗😘💗
+        </div>
+    </div>
+</div>
+<audio id="bgMusic" loop preload="auto">
+    <source src="Purity.mp3.mp3" type="audio/mpeg">
+    <!-- Add Purity.mp3.mp3 to the project or replace this source with the correct file -->
+</audio>
+
 <div class="night">
     <!-- Floating background hearts -->
     <div class="bg-heart" style="--color:#ffb3d9; --delay:0s; left:10%; bottom:-50px;"></div>
@@ -339,159 +713,101 @@ p{
     </div>
     
     <div class="container">
-        <h1>Happy Valentine's Day</h1>
-        <p>happy valentine's bebeee hahahaha. Will you be my Valentine This year? YES or NO?</p>
+        <h1>Happy Birthday bebee! 🎉</h1>
         <div class="button-container">
-            <button class="btn yes">Yes 💕</button>
-            <button class="btn no">No 💔</button>
+            <button class="btn letter-btn" onclick="showLetter()" style="background:#ff6b9d; color:white;">Letter 💌</button>
         </div>
     </div>
 </div>
 
-<!-- Letter Modal -->
-<div id="letterModal" class="modal">
-    <div class="modal-content">
-        <button class="close-btn" onclick="closeLetter()">&times;</button>
-        <img src="letter.jpg.jpg" alt="Letter Image" class="letter-image">
-        <div class="letter-message">
-            <p>Hi bebee HAHAHAHHAA na surprise napud ka nuu 🤭 Happy Valentine's bebee 💗
-Wala ko kabalo kung imoha nabang gi basa akong letter pero karon hatagan napud tikaa na surprise pud ka bebe nu nganong naa imong nawng HAHAHAHHA 
-So first of all I just want to thank you for everything bebee, thank youu kaayo sa tanan 🥹💖 sa tanan kalipay na imong gi hatag sa akoa. Happy kaayo ko kay nakaila jud tikaaa ✨ 
-Naka alala paba ka pano ta nag kaila? hahahaha funny kaayo sa imong kwento nga na love at first sight ka sa akoa pag baba nako sa sakyanan ambot ug jamming ba to nimo sa akoa kay crush biya ko nimo HAHAHAHHA pero bitaw bebee crush pud kaayo tika ato that time 
-Na alala ba nimo tong gi tripan tang manoy nimo nga mag pa ila-ila lagi? didto pud biya to na time nga nag shake hands ta nga pirte nakong kiliga HAHAHAHAHHA jejemon pa kaayo pero didto jud ta nag start… hangtod sa nag chat2 nata ug nag kita 
-At first malipayun pata ato pero after 4 months nag bulag ta. Wala ta kabalo asa ta nag kulang ato sa isat-isa. I can't blame you that time kay wala man pud ko kabalo asa ko nagkamali. Pero habang nag dugay, naka realize ko nga mga bata pajud guro ta ato nga time 
-Pero karon nga dagko nata, kasabot nata sa atong situation. Di lang nato i-pressure atong sarili kay taas pa ta'g baktasun 
-Pero karon, bebe, buhaton nako ang tanan para malipay tang duha 
-Oo, naa ta sa situation nga layo, pero dili na hadlang para sa akoa, saimoha kay kabalo ko nga worth it kaayo ug makaya nato ning duha. Kabalo ko sa akong sarili nga bisan layo ta makayaa nato ni, i-cherish tika in every universe ✨😘 
-Kabalo pud ko nimo nga love pud ko nimo, ma feel jud nako na 🥹💞 maong thankful kaayo ko saimoha nga naabot ka sa akong life 🌷🥰 
-Ayaw kabalaka bebee, buhaton nato tanan nga makaya nato ang ingana nga situation nga LDR. Kung sa kanta pa "Kalapastangan ang 'di Ka ibigin
-Kalokohan ang 'di Ka isipin
-Kung ang mundo ay biglang gugunawin
-Ikaw ang una kong hahanapin"
-Love tikaaa bebee
-Diba naka ask ka "what did I do to deserve thiss??"
-Just simple bebee… maybe I didn't deserve you first, but I'm glad I have you now 💞✨ 
-Just be you. That's all I need 🤍 
-You know bebe, you're just like a universe 🥹💗 naa na tanan saimoha akong gipangita. Not just sa outside, but inside jud — imong kabut-an, pag ka generous daghan pa kaayo nga di nako ma explain…
-Pero pinaka importante, duol ka sa Ginoo 
-Nyaaa gwapaaaa pajud kaayoo tayss 😍😘HAHAHAHAHA 
-Cuteee kaayo akong bebe uy hubakon lang HAHAHAHA
-Basta bebee, mao rana.
-Happy Valentine's 💗
-Cute kaayo ka saimong picture HAHAHAHA</p>
-<p>I love you in every universe💗😘💗</p>
-        </div>
-    </div>
-</div>
 
+
+
+
+
+
+
+
+                
 <script>
-let noAttempts = 0;
-const maxAttempts = 10;
-const yesBtn = document.querySelector('.yes');
-const noBtn = document.querySelector('.no');
-const cardImage = document.querySelector('.card-image');
-const messageText = document.querySelector('p');
-const cardWrapper = document.querySelector('.card-wrapper');
+// --- Animation state and typed letter logic ---
+let typeIndex = 0;
+let typeInterval = null;
+let musicPlaying = false;
 
-// Array of image filenames
-const images = [
-    'cat.jpg.jpg',
-    'cat1.jpg.jpg',
-    'cat2.jpg.jpg',
-    'cat3.jpg.jpg',
-    'cat4.jpg.jpg',
-    'cat5.jpg.jpg',
-    'cat6.jpg.jpg',
-    'cat7.jpg.jpg',
-    'cat8.jpg.jpg',
-    'cat9.jpg.jpg',
-    'cat10.jpg (2).jpg'
-];
-
-// Array of messages for each attempt
-const messages = [
-    "happy valentine's bebeee hahahaha. Will you be my Valentine This year? YES or NO?",
-    "sure uy nag No ka sa chuy? ayaw ingna mag No napud ka.",
-    "nag No jud diay sya, ara oh matcha bebee favorite nimo kay para dili naka mag NO.",
-    "nag No gihapon uy gina-layo na gani nato ang No mag No jud", // Replace with your message
-    "Naa man kuy kwarta daee oh ngano nag No man gihapon ka?", // Replace with your message
-    "awa gi pakyuhan nuon ka sige man gud kag No. please daee ayaw na pag No kay mapakyuhan napud ka HAHAHAHA", // Replace with your message
-    "Laina uy nag No jud diay sya. awa mag hamay jud ka karon kung mag No gihapon ka", // Replace with your message
-    "Awa gi ingnan tika HAHAHAHAHA gi pakyuhan nuon ka", // Replace with your message
-    "HAHAHAHA atik lang daeee HAHAHAHA. sige na bebeee, be my valentine<3", // Replace with your message
-    "arghh!! lamia kissan uy. Ayaw nag tanggi sa chuy ba pag Yes na diha!" // Replace with your message
-];
-
-// Yes button - show success message based on attempts
-yesBtn.addEventListener('click', function() {
-    if(noAttempts < maxAttempts) {
-        // If clicked YES before 10 attempts
-        document.querySelector('.container').innerHTML = `
-            <p style="font-size:1.5rem; margin-top:50px;">yay nag yes jud sya 😊</p>
-            <button class="btn letter-btn" onclick="showLetter()" style="background:#ff6b9d; color:white; margin-top:30px;">Letter 💌</button>
-        `;
-    } else {
-        // If clicked YES after 10 attempts (NO button disappeared)
-        document.querySelector('.container').innerHTML = `
-            <p style="font-size:1.5rem; margin-top:50px;">I knew you'd say yes! 😊</p>
-            <p style="font-size:1.2rem;">Happy Valentine's Day bebeee   ! 🌸💖</p>
-            <button class="btn letter-btn" onclick="showLetter()" style="background:#ff6b9d; color:white; margin-top:30px;">Letter 💌</button>
-        `;
-    }
-});
-
-// Show letter modal
 function showLetter() {
-    document.getElementById('letterModal').classList.add('show');
-}
+    const overlay = document.getElementById('letterOverlay');
+    const card = document.getElementById('letterCard');
+    const envelope = document.getElementById('envelope');
+    const content = document.getElementById('letterContent');
+    const originalMessage = document.getElementById('letterSource');
+    const originalImage = document.querySelector('.card-image');
+    const bgMusic = document.getElementById('bgMusic');
 
-// Close letter modal
-function closeLetter() {
-    document.getElementById('letterModal').classList.remove('show');
-}
+    // Keep the original birthday card unchanged and fade it out
+    document.querySelector('.card-wrapper').classList.add('fade-out');
 
-// No button - move randomly OUTSIDE the box, change image and message
-noBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    if(noAttempts < maxAttempts) {
-        noAttempts++;
-        
-        // Change image based on attempt number
-        if(noAttempts < images.length) {
-            cardImage.src = images[noAttempts];
-        }
-        
-        // Change message based on attempt number
-        if(noAttempts < messages.length) {
-            messageText.textContent = messages[noAttempts];
-        }
-        
-        // Make Yes button bigger (30% per attempt)
-        const currentSize = 1 + (noAttempts * 0.3);
-        yesBtn.style.transform = `scale(${currentSize})`;
-        
-        // Move No button to random position on the screen (not inside container)
-        const viewportWidth = window.innerWidth;
-        const viewportHeight = window.innerHeight;
-        
-        const maxX = viewportWidth - noBtn.offsetWidth - 20;
-        const maxY = viewportHeight - noBtn.offsetHeight - 20;
-        
-        const randomX = Math.random() * maxX;
-        const randomY = Math.random() * maxY;
-        
-        noBtn.style.position = 'fixed';
-        noBtn.style.left = randomX + 'px';
-        noBtn.style.top = randomY + 'px';
-        noBtn.style.zIndex = '1000';
-        
-        // After 10 attempts, disable No button
-        if(noAttempts >= maxAttempts) {
-            noBtn.style.display = 'none';
-            messageText.textContent = 'Bleee! Ni gara naka ha gi tanggal na nako ang No. So pag YES na diha! 💕';
-        }
+    overlay.classList.add('show');
+    card.classList.remove('visible');
+    envelope.classList.remove('open');
+    content.textContent = '';
+    clearInterval(typeInterval);
+
+    // Start music after user click to satisfy autoplay policy
+    if (!musicPlaying && bgMusic) {
+        bgMusic.currentTime = 0;
+        bgMusic.play().catch(() => {
+            // playback may be blocked if browser requires additional interaction
+        });
+        musicPlaying = true;
     }
-});
+
+    setTimeout(() => {
+        envelope.classList.add('open');
+    }, 600);
+
+    setTimeout(() => {
+        card.classList.add('visible');
+        typeWriter(originalMessage ? originalMessage.textContent.trim() : '', content);
+    }, 1600);
+}
+
+function typeWriter(message, element) {
+    element.textContent = '';
+    typeIndex = 0;
+    clearInterval(typeInterval);
+
+    typeInterval = setInterval(() => {
+        if (typeIndex >= message.length) {
+            clearInterval(typeInterval);
+            return;
+        }
+        element.textContent += message[typeIndex];
+        typeIndex += 1;
+        element.scrollTop = element.scrollHeight;
+    }, 32);
+}
+
+function closeLetter() {
+    const overlay = document.getElementById('letterOverlay');
+    const card = document.getElementById('letterCard');
+    const envelope = document.getElementById('envelope');
+    const content = document.getElementById('letterContent');
+    const bgMusic = document.getElementById('bgMusic');
+
+    overlay.classList.remove('show');
+    card.classList.remove('visible');
+    envelope.classList.remove('open');
+    document.querySelector('.card-wrapper').classList.remove('fade-out');
+    clearInterval(typeInterval);
+    content.textContent = '';
+
+    if (bgMusic) {
+        bgMusic.pause();
+        bgMusic.currentTime = 0;
+        musicPlaying = false;
+    }
+}
 </script>
 
 </body>
