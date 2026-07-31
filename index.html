@@ -221,8 +221,11 @@ p{
     backdrop-filter: blur(8px);
     z-index:10000;
     justify-content:center;
-    align-items:center;
-    overflow:hidden;
+    align-items:flex-start;
+    overflow-y:auto;
+    overflow-x:hidden;
+    padding:30px 20px 20px;
+    -webkit-overflow-scrolling:touch;
 }
 
 .letter-overlay.show{
@@ -256,6 +259,7 @@ p{
     width:min(100%, 920px);
     padding:20px;
     z-index:1;
+    max-width:100%;
 }
 
 .envelope-wrapper{
@@ -375,6 +379,8 @@ p{
     display:none;
     transition:opacity 0.55s ease, transform 0.55s ease;
     position:relative;
+    max-height:none;
+    overflow:visible;
 }
 
 .close-overlay-btn{
@@ -424,13 +430,19 @@ p{
 }
 
 .letter-card .letter-content{
-    max-height:430px;
+    max-height:calc(100vh - 320px);
     overflow-y:auto;
     padding-right:10px;
     line-height:1.8;
     color:#4f3a3c;
     white-space:pre-wrap;
     font-size:1rem;
+}
+
+@media (max-width: 520px) {
+    .letter-card .letter-content{
+        max-height:calc(100vh - 280px);
+    }
 }
 
 .letter-card .close-card{
@@ -679,15 +691,30 @@ p{
         <div id="letterSource" style="display:none; white-space:pre-wrap;">
 Hi, Bebeee! Happy Happy Birthday!!!🎉🤭
 
-Happy 20th Birthday Bebeee🎉, I hope your day is as amazing and special as you are. Today is your day, and I hope it's filled with laughter, love and everything that makes you happy. I know nag ka problema ka karon sa imong situation sa school, but continue lang gihapon ka, continue lang gihapon ka miskan magkalisod na. Mao ng isa sa akong naganahan sa imoha dili dali mo surrender. Kabalo ko bebe nga nagkalisod ka-karon sa imong study, pressured kaayo ka. Pero ayaw lang jud ug surrender bebee, kung kapoy ka pahuway, then continue napud. Maong ayaw jud kawalag hope bebee, dili mag sige ug isip ug mga negative comments, charr. HAHAHAHAHA kabalo ko makaya rana nimo. In Isaiah 60:22 when the time is right i the lord will make it happen💞💞, So laban lang jud,
+Happy 20th Birthday Bebeee🎉, I hope your day is as amazing and special as you are. Today is your day, and I hope it's filled with laughter, love and everything that makes you happy. I know na nagka-problema ka karon sa imong situation sa school, but continue lang gihapon. Padayon lang, bisan lisod na kaayo. Mao gyud na ang isa sa mga butang nga akong gina-admire sa imo—dili ka dali mo-surrender.
 
-bebe. thank you for being such an incredible person. Your kindness, Strength, and positivity inspire everyone around you. You bring so much joy, love, and happiness into my life. I am grateful for every moments that we share together in that day, na nag kita ta. If God allowed me to make a wish, I would ask to be by your side forever, for nothing makes me happier than sharing life's beautiful and unforgettable moments with you. Every video call, every laugh, and every kabuang nato, lalo natong nag kita ta, has become a memory I will always treasure.✨😘 and thank you for being you. and i-remind nako nimo nga, you are enough, you are loved, you are so so special.✨✨ Bebe padayun lang sa imong pagka-maayo, and unta tagaan pakag daghang blessing ni lord nga mo abot sa imoha, amping always bebe.😘💗
+Kabalo ko bebe nga naglisod ka-karon sa imong study, pressured kaayo ka. Pero ayaw lang jud ug surrender bebee, kung kapoy ka pahuway, then continue napud. Maong ayaw jud kawalag hope bebee, dili mag sige ug isip ug mga negative comments, charr. HAHAHAHAHA kabalo ko makaya rana nimo.
 
+"When the time is right i the lord will make it happen."-Isaiah 60:22💞
+
+So laban lang gyud bebe.💞 
+
+Thank you for being such an incredible person. Your kindness, Strength, and positivity inspire everyone around you. You bring so much joy, love, and happiness into my life.
+
+I am grateful for every moment that we've shared together, especially that day when we finally met, miskan gamay ra kaayo nga panahon. If God allowed me to make a one wish, I would ask to be by your side forever, because nothing makes me happier than sharing life's beautiful and unforgettable moments with you.
+ 
+Every video call, every laugh, and every kabuang nato, lalo natong nag kita ta, has become a memory I will always treasure.✨😘 
+
+And thank you for being you. 
+
+I just want to remind you that, you are enough, you are loved, you are so so special.✨✨ I want you to know that I cherish you more than words can explain. Thank you for being a beautiful part of my life. I cherish every moment, every laugh, every conversation, and every memory we create together. You are someone I will always treasure. 💗 
+
+Bebe, padayon lang sa imong pagka-maayo. I pray that God will continue to bless you abundantly and guide you in everything that you do. Amping always, bebe.😘💗
 
 reason why i love you:🥹💖
 your smile, your kindness imong mga corny na jokes HAHHAHA and the last one is your hug. 🥹🌷 I miss you so much bebe🥹💖🌷
 
-I love you bebeeee💗😘💗
+I love you bebeeee, and happy birthday again!💗😘💗
         </div>
     </div>
 </div>
