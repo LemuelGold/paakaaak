@@ -742,7 +742,7 @@ I love you bebeeee, and happy birthday again!💗😘💗
     <div class="container">
         <h1>Happy Birthday bebee! 🎉</h1>
         <div class="button-container">
-            <button class="btn letter-btn" onclick="showLetter()" style="background:#ff6b9d; color:white;">Letter 💌</button>
+            <button id="letterButton" class="btn letter-btn" onclick="showLetter()" style="background:#ff6b9d; color:white;">Letter 💌</button>
         </div>
     </div>
 </div>
@@ -801,7 +801,15 @@ function showLetter() {
     content.textContent = '';
     clearInterval(typeInterval);
 
-    toggleMusic();
+    if (bgMusic) {
+        bgMusic.currentTime = 0;
+        bgMusic.play().then(() => {
+            musicPlaying = true;
+        }).catch((error) => {
+            console.warn('Music could not start from letter click:', error);
+            musicPlaying = false;
+        });
+    }
 
     setTimeout(() => {
         envelope.classList.add('open');
