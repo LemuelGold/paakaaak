@@ -719,7 +719,7 @@ I love you bebeeee, and happy birthday again!💗😘💗
     </div>
 </div>
 <audio id="bgMusic" loop preload="auto">
-    <source src="/Purity.mp3.mp3?v=20260801" type="audio/mpeg">
+    <source src="Purity.mp3.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
 </audio>
 
@@ -743,7 +743,6 @@ I love you bebeeee, and happy birthday again!💗😘💗
         <h1>Happy Birthday bebee! 🎉</h1>
         <div class="button-container">
             <button class="btn letter-btn" onclick="showLetter()" style="background:#ff6b9d; color:white;">Letter 💌</button>
-            <button class="btn" onclick="startBgMusic()" style="background:#fff; color:#ff6b9d; border:2px solid #ff6b9d;">Play Music 🔊</button>
         </div>
     </div>
 </div>
@@ -763,26 +762,27 @@ let typeIndex = 0;
 let typeInterval = null;
 let musicPlaying = false;
 
-function startBgMusic() {
+function toggleMusic() {
     const bgMusic = document.getElementById('bgMusic');
 
-    if (!bgMusic || musicPlaying) {
+    if (!bgMusic) {
         return;
     }
 
-    bgMusic.load();
-    bgMusic.currentTime = 0;
+    if (musicPlaying) {
+        bgMusic.pause();
+        musicPlaying = false;
+        return;
+    }
 
+    bgMusic.currentTime = 0;
     bgMusic.play().then(() => {
         musicPlaying = true;
     }).catch((error) => {
-        console.warn('Music could not start automatically:', error);
+        console.warn('Music could not start:', error);
         musicPlaying = false;
     });
 }
-
-document.addEventListener('click', startBgMusic, { once: true });
-document.addEventListener('touchstart', startBgMusic, { once: true });
 
 function showLetter() {
     const overlay = document.getElementById('letterOverlay');
@@ -801,7 +801,7 @@ function showLetter() {
     content.textContent = '';
     clearInterval(typeInterval);
 
-    startBgMusic();
+    toggleMusic();
 
     setTimeout(() => {
         envelope.classList.add('open');
