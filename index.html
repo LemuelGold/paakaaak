@@ -719,8 +719,8 @@ I love you bebeeee, and happy birthday again!💗😘💗
     </div>
 </div>
 <audio id="bgMusic" loop preload="auto">
-    <source src="Purity.mp3.mp3" type="audio/mpeg">
-    <!-- Add Purity.mp3.mp3 to the project or replace this source with the correct file -->
+    <source src="Purity.mp3.mp3?v=20260801" type="audio/mpeg">
+    Your browser does not support the audio element.
 </audio>
 
 <div class="night">
@@ -762,13 +762,33 @@ let typeIndex = 0;
 let typeInterval = null;
 let musicPlaying = false;
 
+function startBgMusic() {
+    const bgMusic = document.getElementById('bgMusic');
+
+    if (!bgMusic || musicPlaying) {
+        return;
+    }
+
+    bgMusic.load();
+    bgMusic.currentTime = 0;
+
+    bgMusic.play().then(() => {
+        musicPlaying = true;
+    }).catch((error) => {
+        console.warn('Music could not start automatically:', error);
+        musicPlaying = false;
+    });
+}
+
+document.addEventListener('click', startBgMusic, { once: true });
+document.addEventListener('touchstart', startBgMusic, { once: true });
+
 function showLetter() {
     const overlay = document.getElementById('letterOverlay');
     const card = document.getElementById('letterCard');
     const envelope = document.getElementById('envelope');
     const content = document.getElementById('letterContent');
     const originalMessage = document.getElementById('letterSource');
-    const originalImage = document.querySelector('.card-image');
     const bgMusic = document.getElementById('bgMusic');
 
     // Keep the original birthday card unchanged and fade it out
@@ -780,14 +800,7 @@ function showLetter() {
     content.textContent = '';
     clearInterval(typeInterval);
 
-    // Start music after user click to satisfy autoplay policy
-    if (!musicPlaying && bgMusic) {
-        bgMusic.currentTime = 0;
-        bgMusic.play().catch(() => {
-            // playback may be blocked if browser requires additional interaction
-        });
-        musicPlaying = true;
-    }
+    startBgMusic();
 
     setTimeout(() => {
         envelope.classList.add('open');
