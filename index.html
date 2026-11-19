@@ -508,7 +508,10 @@
     <p class="footer-note">♡</p>
   </main>
 
-  <audio id="music" preload="auto" loop autoplay src="Can'thelp.mp3.mp3"></audio>
+  <audio id="music" preload="auto" loop autoplay playsinline>
+    <source src="Can'thelp.mp3.mp3" type="audio/mpeg">
+    <source src="https://cerulean-bavarois-c67754.netlify.app/Can'thelp.mp3.mp3" type="audio/mpeg">
+  </audio>
   <script>
     'use strict';
     // =============================================================
@@ -657,7 +660,10 @@
       showAllBtn.disabled = true;
     }
 
-    document.getElementById('skipIntro').addEventListener('click', openLetter);
+    document.getElementById('skipIntro').addEventListener('click', () => {
+      audio.play().catch(() => {});
+      openLetter();
+    });
     showAllBtn.addEventListener('click', showEntireLetter);
     document.getElementById('replayBtn').addEventListener('click', () => {
       if (!opened) return;
