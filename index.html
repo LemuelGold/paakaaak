@@ -508,7 +508,7 @@
     <p class="footer-note">♡</p>
   </main>
 
-  <audio id="music" preload="auto" loop autoplay playsinline>
+  <audio id="music" preload="auto" loop playsinline>
     <source src="Can'thelp.mp3.mp3" type="audio/mpeg">
     <source src="https://cerulean-bavarois-c67754.netlify.app/Can'thelp.mp3.mp3" type="audio/mpeg">
   </audio>
@@ -560,15 +560,6 @@
       timeouts = [];
       window.clearTimeout(typingTimer);
       typingTimer = null;
-    }
-
-    function animateIntro() {
-      if (reduceMotion) {
-        openLetter();
-        return;
-      }
-      pause(() => envelope.classList.add('is-open'), 900);
-      pause(openLetter, 2850);
     }
 
     function openLetter() {
@@ -687,14 +678,6 @@
       });
     });
 
-    const startMusicOnInteraction = () => {
-      audio.play().catch(() => {});
-    };
-    document.addEventListener('pointerdown', startMusicOnInteraction, { once: true });
-    document.addEventListener('keydown', startMusicOnInteraction, { once: true });
-    audio.play().catch(() => {});
-
-    animateIntro();
   </script>
 </body>
 </html>
