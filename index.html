@@ -520,7 +520,7 @@
     // =============================================================
     const paragraphs = [
       "Hiii, bebeeee! Happy one year and one month!🥰❤️ HAHAHAHAHA.",
-      "Pero nag-wonder guro ka, bebee, nganong one year and one month na ta. Pero before that, I realized nga grabe, paspas ra jud kaayo ang panahon. Dati, nagsungog-sungog ra ko sa imong note ato, pero I didn't expect nga pansinon ko nimo or mag-reply ka sa akong note. But that was so epic, charrr, epicccc?!! HAHAHAHAHA.",
+      "Pero nag-wonder guro ka, bebee, nganong one year and one month na ta, pero actually Nov, 20 naman ta. sorry sa late send bebee kay wala man gud signal gainang buntag, aga pa kaayo ko nag mata HAHAHAHA. Pero before that, I realized nga grabe, paspas ra jud kaayo ang panahon. Dati, nagsungog-sungog ra ko sa imong note ato, pero I didn't expect nga pansinon ko nimo or mag-reply ka sa akong note. But that was so epic, charrr, epicccc?!! HAHAHAHAHA.",
       "Pero btw, bebee, katong nag-reply gud ka sa akong note, I'm so happy nga gipansin ko nimo. Wala jud ko nag-expect nga mag-reply ka. Argh, basta happy kaayo ko that time, like gikilig jud ko. HAHAHAHA. Because that was the first time we talked again after how many months or a year and a few months ata.",
       "So, first, kumustahay lang, share-share ug mga kaagi sa kinabuhi, but not until we started talking about each other's situations. Like I said that time, I missed you, and you said that you missed me too. And we decided to give each other a shot, so here we are, still happy and loving each other. 🥹❤️",
       "Bebeee, I love you from the bottom of my heart, and I really mean it. I didn't expect that we would make it this far. I'm so grateful to have you in my life, and I'm so grateful that you've stayed with me even though we're far apart.🥹🥹❤️",
@@ -567,10 +567,14 @@
       opened = true;
       audio.play().catch(() => {});
       clearPending();
-      intro.classList.add('is-gone');
-      page.classList.add('is-visible');
-      pause(() => { intro.hidden = true; }, reduceMotion ? 0 : 800);
-      pause(startTypewriter, reduceMotion ? 0 : 550);
+      envelope.classList.add('is-open');
+      const animationDuration = reduceMotion ? 0 : 1500;
+      pause(() => {
+        intro.classList.add('is-gone');
+        page.classList.add('is-visible');
+        pause(() => { intro.hidden = true; }, reduceMotion ? 0 : 800);
+        pause(startTypewriter, reduceMotion ? 0 : 550);
+      }, animationDuration);
       // On a phone, gently guide the reader past the photo to the unfolding words.
       // If they start scrolling themselves, do not interfere.
       if (window.innerWidth <= 760 && !reduceMotion) {
