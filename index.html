@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#e8d7e8" />
-  <meta name="description" content="A little birthday letter, made just for you." />
-  <title>Happy Birthday, Bebeee! 💜</title>
+  <meta name="description" content="A little anniversary letter, made just for you." />
+  <title>Happy Anniversary, Bebeee! 💜</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -445,25 +445,25 @@
   </svg>
   <div class="dot one" aria-hidden="true"></div><div class="dot two" aria-hidden="true"></div><div class="dot three" aria-hidden="true"></div>
 
-  <div id="intro" class="intro" aria-label="Opening your birthday letter">
+  <div id="intro" class="intro" aria-label="Opening your anniversary letter">
     <div class="intro-inner">
       <p class="eyebrow">A little something for you</p>
       <div id="envelope" class="envelope" aria-hidden="true">
         <div class="env-back"></div><div class="env-note">For you ♡</div>
         <div class="env-front"></div><div class="env-flap"></div><div class="env-seal">✿</div>
       </div>
-      <h2 class="intro-title">A birthday surprise</h2>
+      <h2 class="intro-title"> Anniversary surprise</h2>
       <p class="intro-hint">A little letter is unfolding...</p>
       <button id="skipIntro" class="intro-skip" type="button">Open now</button>
     </div>
   </div>
 
-  <main id="page" class="page" aria-label="Birthday letter">
+  <main id="page" class="page" aria-label="Anniversary letter">
     <header class="header">
       <p class="eyebrow">A letter, just for you</p>
       <div class="small-flower" aria-hidden="true">✿</div>
-      <h1 class="main-title">Happy Birthday,<em>Bebeee! ♡</em></h1>
-      <p class="header-subtitle">A little keepsake of words &amp; memories</p>
+      <h1 class="main-title">Happy Anniversary,<em>Bebeee! ♡</em></h1>
+      <p class="header-subtitle">I'm so grateful to have you in my life, and I'm so grateful that you've stayed with me even though we're far apart</p>
     </header>
 
     <div class="content-grid">
@@ -499,18 +499,16 @@
         <div class="actions">
           <button id="showAllBtn" type="button" class="button primary">Show full letter</button>
           <button id="replayBtn" type="button" class="button">↻ Replay</button>
-          <button id="musicBtn" type="button" class="button" aria-pressed="false">♫ Play music</button>
         </div>
         <div id="letterContent" class="letter-content" aria-hidden="true"></div>
         <div id="accessibleMessage" class="sr-only"></div>
         <div class="letter-end" aria-hidden="true">✿ ♡ ✿</div>
       </article>
     </div>
-    <p class="footer-note">Made with care, in shades of lavender &amp; little memories. ♡</p>
+    <p class="footer-note">♡</p>
   </main>
 
-  <!-- Music from the user's ORIGINAL code. Playback requires a tap on most phones. -->
-  <audio id="music" preload="none" loop src="https://cerulean-bavarois-c67754.netlify.app/Purity.mp3.mp3"></audio>
+  <audio id="music" preload="auto" loop autoplay src="Can'thelp.mp3.mp3"></audio>
   <script>
     'use strict';
     // =============================================================
@@ -518,20 +516,16 @@
     // To change the letter, edit the entries below (one paragraph each).
     // =============================================================
     const paragraphs = [
-      "Hi, Bebeee! Happy Happy Birthday!!!🎉🤭",
-      "Happy 20th Birthday Bebeee🎉, I hope your day is as amazing and special as you are. Today is your day, and I hope it's filled with laughter, love and everything that makes you happy. I know na nagka-problema ka karon sa imong situation sa school, but continue lang gihapon. Padayon lang, bisan lisod na kaayo. Mao gyud na ang isa sa mga butang nga akong gina-admire sa imo—dili ka dali mo-surrender.",
-      "Kabalo ko bebe nga naglisod ka-karon sa imong study, pressured kaayo ka. Pero ayaw lang jud ug surrender bebee, kung kapoy ka pahuway, then continue napud. Maong ayaw jud kawalag hope bebee, dili mag sige ug isip ug mga negative comments, charr. HAHAHAHAHA kabalo ko makaya rana nimo.",
-      "\"When the time is right i the lord will make it happen.\"-Isaiah 60:22💞",
-      "So laban lang gyud bebe.💞",
-      "Thank you for being such an incredible person. Your kindness, Strength, and positivity inspire everyone around you. You bring so much joy, love, and happiness into my life.",
-      "I am grateful for every moment that we've shared together, especially that day when we finally met, miskan gamay ra kaayo nga panahon. If God allowed me to make a one wish, I would ask to be by your side forever, because nothing makes me happier than sharing life's beautiful and unforgettable moments with you.",
-      "Every video call, every laugh, and every kabuang nato, lalo natong nag kita ta, has become a memory I will always treasure.✨😘",
-      "And thank you for being you.",
-      "I just want to remind you that, you are enough, you are loved, you are so so special.✨✨ I want you to know that I cherish you more than words can explain. Thank you for being a beautiful part of my life. I cherish every moment, every laugh, every conversation, and every memory we create together. You are someone I will always treasure. 💗",
-      "Bebe, padayon lang sa imong pagka-maayo. I pray that God will continue to bless you abundantly and guide you in everything that you do. Amping always, bebe.😘💗",
-      "reason why i love you:🥹💖",
-      "your smile, your kindness imong mga corny na jokes HAHHAHA and the last one is your hug. 🥹🌷 I miss you so much bebe🥹💖🌷",
-      "I love you bebeeee, and happy birthday again!💗😘💗"
+      "Hiii, bebeeee! Happy one year and one month!🥰❤️ HAHAHAHAHA.",
+      "Pero nag-wonder guro ka, bebee, nganong one year and one month na ta. Pero before that, I realized nga grabe, paspas ra jud kaayo ang panahon. Dati, nagsungog-sungog ra ko sa imong note ato, pero I didn't expect nga pansinon ko nimo or mag-reply ka sa akong note. But that was so epic, charrr, epicccc?!! HAHAHAHAHA.",
+      "Pero btw, bebee, katong nag-reply gud ka sa akong note, I'm so happy nga gipansin ko nimo. Wala jud ko nag-expect nga mag-reply ka. Argh, basta happy kaayo ko that time, like gikilig jud ko. HAHAHAHA. Because that was the first time we talked again after how many months or a year and a few months ata.",
+      "So, first, kumustahay lang, share-share ug mga kaagi sa kinabuhi, but not until we started talking about each other's situations. Like I said that time, I missed you, and you said that you missed me too. And we decided to give each other a shot, so here we are, still happy and loving each other. 🥹❤️",
+      "Bebeee, I love you from the bottom of my heart, and I really mean it. I didn't expect that we would make it this far. I'm so grateful to have you in my life, and I'm so grateful that you've stayed with me even though we're far apart.🥹🥹❤️",
+      "Thank you, bebee, sa tanan, bebee. Thank you sa imong pag-help sa akoa, sa pag-support nimo sa akoa always, ug sa imong pagsalig sa akoa pirmi. Thank you kaayo.",
+      "Sa one year nato nga pag-uban, daghan jud kaayo tag naagian. Mga kanya-kanyang problema, mga kanya-kanyang kinabuhi kada adlaw, pero na-survive gihapon nato ang tanan. Unta, bebee, as time goes on, we grow even stronger. Even with our individual problems and the challenges we face together, magtinabangay lang ta. Just have faith, bebee. Makaya ra nato ni. 🥰❤️",
+      "So, you might be wondering nganong one year and one month na ta. Kay akong gi-basehan kay kung kanus-a ta nag-start ug chat-chat balik. HAHAHAHAHA. Kay wala man gud tay official date kung kanus-a ta nag-start, so I came up with this idea. Kanang nakahunahuna man gud ko, bebee, nga murag one year na jud ta ba. Mao to nga nag-read back jud ko, then nakita nako nga October 19 pa man diay ta nag-chat balik. So, mao nang didto na lang ko nag-base. HAHAHAHAHA.",
+      "Pero bitaw, bebee, happy kaayo ko nga layo na diay tag naabtan. Ang message lang jud nako sa imoha, bebee, kay pag-amping lang jud always diha. Maghinay-hinay ug padagan sa motor, niya kaon sa saktong oras. Dili magpa-skip ug kaon, ha? Laban lang jud sa every problem nga ma-face nimo, especially sa imong thesis. Laban lang jud! And enjoy your life, bebee. Pray always, bebee. Puhon, paburan ra ta sa Ginoo, nga mag kita ta,.🥹🥹❤️",
+      "I love youuuu so muchhh, bebeee! I miss youuu! 😘❤️❤️"
 ];
 
     // Typewriter speed: higher numbers = slower text (milliseconds per character).
@@ -544,7 +538,6 @@
     const progressText = document.getElementById('progressText');
     const accessibleMessage = document.getElementById('accessibleMessage');
     const audio = document.getElementById('music');
-    const musicBtn = document.getElementById('musicBtn');
     const showAllBtn = document.getElementById('showAllBtn');
     let timeouts = [];
     let typingTimer = null;
@@ -578,6 +571,7 @@
     function openLetter() {
       if (opened) return;
       opened = true;
+      audio.play().catch(() => {});
       clearPending();
       intro.classList.add('is-gone');
       page.classList.add('is-visible');
@@ -620,7 +614,7 @@
       function typeNext() {
         if (thisSession !== session) return;
         if (paragraphIndex >= paragraphs.length) {
-          progressText.textContent = 'Every word is here. Happy Birthday! ✿';
+          progressText.textContent = 'Every word is here. Happy one year and one month! ✿';
           showAllBtn.disabled = true;
           return;
         }
@@ -687,22 +681,12 @@
       });
     });
 
-    musicBtn.addEventListener('click', async () => {
-      if (!audio.paused) {
-        audio.pause();
-        musicBtn.textContent = '♫ Play music';
-        musicBtn.setAttribute('aria-pressed', 'false');
-        return;
-      }
-      try {
-        await audio.play();
-        musicBtn.textContent = '♫ Pause music';
-        musicBtn.setAttribute('aria-pressed', 'true');
-      } catch (err) {
-        musicBtn.textContent = 'Music unavailable';
-        musicBtn.setAttribute('aria-pressed', 'false');
-      }
-    });
+    const startMusicOnInteraction = () => {
+      audio.play().catch(() => {});
+    };
+    document.addEventListener('pointerdown', startMusicOnInteraction, { once: true });
+    document.addEventListener('keydown', startMusicOnInteraction, { once: true });
+    audio.play().catch(() => {});
 
     animateIntro();
   </script>
